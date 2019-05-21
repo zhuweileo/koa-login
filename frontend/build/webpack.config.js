@@ -12,12 +12,8 @@ module.exports = {
   },
   mode: 'production',
   externals:{
-    react: {
-      commonjs: 'react',
-      commonjs2: 'react',
-      amd: 'react',
-      root: 'React' // indicates global variable
-    }
+    react: 'React',
+    'react-dom': 'ReactDOM'
   },
   module: {
     rules: [
