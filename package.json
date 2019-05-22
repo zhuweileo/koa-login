@@ -25,12 +25,14 @@
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.31.0",
-    "webpack-cli": "^3.3.2"
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.4.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-front": "cross-env NODE_ENV=production webpack --config ./frontend/build/webpack.config.js "
+    "build-front": "rm -rf ./frontend/dist&&cross-env NODE_ENV=production webpack --config ./frontend/build/webpack.config.js ",
+    "dev-front": "cross-env NODE_ENV=development webpack-dev-server --config ./frontend/build/webpack.dev.config.js"
   },
-  "author": "",
+  "author": "朱维",
   "license": "ISC"
 }

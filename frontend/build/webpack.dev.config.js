@@ -9,7 +9,7 @@ module.exports = {
     path: path.resolve(__dirname, '../dist'),
     filename: '[name]/[name].js',
   },
-  mode: 'production',
+  mode: 'development',
   externals:{
     react: 'React',
     'react-dom': 'ReactDOM'
