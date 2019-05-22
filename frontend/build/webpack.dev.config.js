@@ -25,7 +25,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        exclude: /node_modules/,
+        // exclude: /node_modules/, //加了之后 引用 antd.css 会报错
         use: [
           {loader: 'style-loader'},
           {loader: 'css-loader'},
