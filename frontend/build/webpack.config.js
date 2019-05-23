@@ -1,17 +1,17 @@
 var path = require('path');
 var htmlPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+var MiniCssExtractPlugin = require("mini-css-extract-plugin");
 var {pages} = require('./page-map'); 
 
 module.exports = {
   entry: getEntry(pages),
   output: {
     path: path.resolve(__dirname, '../dist'),
-    filename: '[name]/[name].js',
+    filename: '[name]/[name].js', // 保证每个页面可以打包进不同文件夹
   },
   mode: 'production',
   externals:{
-    react: 'React',
+    react: 'React', //不将react打包进来
     'react-dom': 'ReactDOM'
   },
   module: {
@@ -25,10 +25,10 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        // exclude: /node_modules/, 
+        // exclude: /node_modules/, //不能加这个，否则import 'antd/dist/antd.css' 时会报错
         use: [
-          {loader: 'style-loader'},
-          {loader: 'css-loader'},
+          process.env.NODE_ENV === 'production'? MiniCssExtractPlugin.loader: 'style-loader',
+          "css-loader",
         ]
       },
       {
@@ -58,16 +58,16 @@ function getPlugins(pages) {
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: "[name]/[name].css",
+      filename: "[name]/[name].css", //保证每个页面的css可以放在自己的文件夹内
       chunkFilename: "[name]/[id].css"
     })
   ]
 
   pages.forEach(function (item) {
     var plugin =new htmlPlugin({
-      filename: `${item.name}/${item.name}.html`,
+      filename: `${item.name}/${item.name}.html`,  //保证每个页面的html可以放在自己的文件夹内
       template: path.resolve(__dirname,item.template),
-      chunks: [item.name],
+      chunks: [item.name], //html只引入自己的js和css
     })
     plugins.push(plugin);
   })
