@@ -4,12 +4,12 @@ var pages = [
   {
     name: 'home',
     entry: path.resolve(__dirname, '../src/entry/home.js'),
-    template: path.resolve(__dirname, '../src/templates/home.html'),
+    template: path.resolve(__dirname, '../src/templates/template.html'),
   },
   {
-    name: 'login',
-    entry: path.resolve(__dirname, '../src/entry/login.js'),
-    template: path.resolve(__dirname, '../src/templates/login.html'),
+    name: 'admin',
+    entry: path.resolve(__dirname, '../src/entry/admin.js'),
+    template: path.resolve(__dirname, '../src/templates/template.html'),
   },
 ]
 

@@ -1,11 +1,6 @@
-import '../scss/index.scss';
 import ReactDOM from 'react-dom'
 import React from 'react'
-
-function App() {
-  return (
-    <div style={{color: '#ccc' }}>login</div>
-  )
-}
+import 'antd/dist/antd.css'
+import App from '../components/admin/App'
 
 ReactDOM.render(<App/>,document.getElementById('app'))
