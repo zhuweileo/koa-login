@@ -1,7 +1,9 @@
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout,  Breadcrumb ,Tabs } from 'antd';
 import Mheader from '../common/Mheader'
 import Mfooter from '../common/Mfooter'
-const { Header, Content, Footer } = Layout;
+const {Content} = Layout;
+
+const TabPane = Tabs.TabPane;
 
 export default function App(params) {
   return (
@@ -11,9 +13,16 @@ export default function App(params) {
         <Breadcrumb style={{ margin: '16px 0' }}>
           <Breadcrumb.Item>Admin</Breadcrumb.Item>
         </Breadcrumb>
-        <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>Admin</div>
+        <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
+          <Tabs defaultActiveKey="1" >
+            <TabPane tab="Tab 1" key="1">
+            </TabPane>
+            <TabPane tab="Tab 1" key="2">
+            </TabPane>
+          </Tabs>,
+        </div>
       </Content>
-      <Mfooter/>
+      <Mfooter />
     </Layout>
   )
 }
