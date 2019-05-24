@@ -1,6 +1,7 @@
 import { Layout,  Breadcrumb ,Tabs } from 'antd';
 import Mheader from '../common/Mheader'
 import Mfooter from '../common/Mfooter'
+import NormalLoginForm from './NormalLoginForm'
 const {Content} = Layout;
 
 const TabPane = Tabs.TabPane;
@@ -15,9 +16,10 @@ export default function App(params) {
         </Breadcrumb>
         <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
           <Tabs defaultActiveKey="1" >
-            <TabPane tab="Tab 1" key="1">
+            <TabPane tab="登陆" key="1">
+              <NormalLoginForm/>
             </TabPane>
-            <TabPane tab="Tab 1" key="2">
+            <TabPane tab="注册" key="2">
             </TabPane>
           </Tabs>,
         </div>
