@@ -25,7 +25,7 @@ export default function App(params) {
               <TabPane tab="注册" key="2">
                 <RegistrationForm/>
               </TabPane>
-            </Tabs>,
+            </Tabs>
           </div>
         </div>
       </Content>
