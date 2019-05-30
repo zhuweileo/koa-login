@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const Router = require('koa-router');
+const api = require('./api')
 
 const home = new Router()
 home.get('/',async (ctx) => {
@@ -21,6 +22,7 @@ page.get('/admin',async (ctx) => {
 const router = new Router()
 router.use('/',home.routes(),home.allowedMethods())
 router.use('/page',page.routes(),page.allowedMethods())
+router.use('/api',api.routes(),api.allowedMethods())
 router.get('*',async (ctx) => {
   ctx.body = '<h1>404!</h1>'
 })
