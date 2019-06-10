@@ -36,6 +36,20 @@ class RegistrationForm extends React.Component {
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+          if(xhr.readyState === 4 && xhr.status === 200){
+            console.log(xhr.response);
+          }
+        }
+        xhr.open('post','/api/signup')
+        const formData = new FormData();
+        // formData.append('userName',values.username)
+        // formData.append('password',values.password)
+        // formData.append('confirm',values.confirm)
+        // formData.append('email',values.phone)
+        xhr.setRequestHeader('content-type','application/json')
+        xhr.send(JSON.stringify(values))
       }
     });
   }
@@ -154,7 +168,7 @@ class RegistrationForm extends React.Component {
             rules: [{ required: true, message: 'Please input your phone number!' }],
           })(<Input addonBefore={prefixSelector} style={{ width: '100%' }} />)}
         </Form.Item>
-        <Form.Item label="Captcha" extra="We must make sure that your are a human.">
+        {/* <Form.Item label="Captcha" extra="We must make sure that your are a human.">
           <Row gutter={8}>
             <Col span={12}>
               {getFieldDecorator('captcha', {
@@ -165,8 +179,8 @@ class RegistrationForm extends React.Component {
               <Button>Get captcha</Button>
             </Col>
           </Row>
-        </Form.Item>
-        <Form.Item {...tailFormItemLayout}>
+        </Form.Item> */}
+        {/* <Form.Item {...tailFormItemLayout}>
           {getFieldDecorator('agreement', {
             valuePropName: 'checked',
           })(
@@ -174,7 +188,7 @@ class RegistrationForm extends React.Component {
               I have read the <a href="">agreement</a>
             </Checkbox>,
           )}
-        </Form.Item>
+        </Form.Item> */}
         <Form.Item {...tailFormItemLayout}>
           <Button type="primary" htmlType="submit">
             Register
