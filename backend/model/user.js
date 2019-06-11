@@ -5,6 +5,19 @@ const user = {
   async create(model) {
     const res = await dbUtil.insertData(userTable,model)
     return res
+  },
+  async getExsistOne({phone,name}) {
+    console.log(name);
+    const sql = `
+      select * from user_info where name="${name}" limit 1;
+    `
+    let result = await dbUtil.query(sql,[]);
+    if(Array.isArray(result) && result.length){
+      result = result[0]
+    } else {
+      result = null
+    }
+    return result
   }
 }
 
