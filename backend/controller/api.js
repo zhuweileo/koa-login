@@ -20,7 +20,11 @@ const api = {
       if (isExsist) {
         ctx.body = {status: 1, msg: '用户已存在'}
       } else {
-        const res = await userModel.create({ password, name });
+        const res = await userModel.create({ 
+          password, 
+          name, 
+          create_time: new Date().getTime()
+        });
         ctx.body = {status: 0, msg: '注册成功' ,data: {name}};
       }
     }
