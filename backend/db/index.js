@@ -51,4 +51,6 @@ async function excuteSqls(){
   }
 }
 
+excuteSqls();
+
 exports.excuteSqls = excuteSqls;

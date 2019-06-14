@@ -10,7 +10,9 @@ import {
   Checkbox,
   Button,
   AutoComplete,
+  message,
 } from 'antd';
+import config from '../../config/config'
 
 const { Option } = Select;
 const AutoCompleteOption = AutoComplete.Option;
@@ -39,15 +41,13 @@ class RegistrationForm extends React.Component {
         const xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
           if(xhr.readyState === 4 && xhr.status === 200){
-            console.log(xhr.response);
+            // console.log(xhr.response);
+            const res = JSON.parse(xhr.response)
+            console.log(res);
+            message.info(res.msg);
           }
         }
-        xhr.open('post','/api/signup')
-        const formData = new FormData();
-        // formData.append('userName',values.username)
-        // formData.append('password',values.password)
-        // formData.append('confirm',values.confirm)
-        // formData.append('email',values.phone)
+        xhr.open('post',config.service.SIGNUP)
         xhr.setRequestHeader('content-type','application/json')
         xhr.send(JSON.stringify(values))
       }
