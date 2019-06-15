@@ -7,7 +7,9 @@
     "antd": "^3.18.1",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
+    "koa-mysql-session": "0.0.2",
     "koa-router": "^7.4.0",
+    "koa-session-minimal": "^3.0.4",
     "koa-static": "^5.0.0",
     "koa2-cors": "^2.0.6",
     "mysql": "^2.17.1"
@@ -35,7 +37,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-front": "rm -rf ./frontend/dist&&cross-env NODE_ENV=production webpack --config ./frontend/build/webpack.config.js ",
     "dev-front": "cross-env NODE_ENV=development webpack-dev-server --config ./frontend/build/webpack.dev.config.js",
-    "init-db": "node ./backend/db/index.js"
+    "init-db": "node ./backend/db/index.js",
+    "dev-back": "nodemon ./backend/index.js"
   },
   "author": "朱维",
   "license": "ISC"

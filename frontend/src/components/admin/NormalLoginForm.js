@@ -1,7 +1,8 @@
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import config from '../../config/config'
 
 class NormalLoginForm extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -11,6 +12,19 @@ class NormalLoginForm extends React.Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+          if (xhr.status === 200 && xhr.readyState === 4) {
+            console.log(xhr.response);
+            const res = JSON.parse(xhr.response)
+            if(res.status === 0){
+              window.location.href = res.data.redirectUrl;
+            }
+          }
+        }
+        xhr.open('post',config.service.SIGNIN)
+        xhr.setRequestHeader('content-type','application/json')
+        xhr.send(JSON.stringify(values))
       }
     });
   }
